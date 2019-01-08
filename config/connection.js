@@ -12,7 +12,7 @@ var connection = mysql.createConnection({
   host: "localhost",
   port: 3306,
   user: "root",
-  password: "4tigres", // REMOVE PASSWORD BEFORE PUSHING TO GITHUB
+  password: "", // REMOVE PASSWORD BEFORE PUSHING TO GITHUB
   database: "burgers_db"
 });
 

@@ -8,36 +8,10 @@
 var connection = require("../config/connection.js");
 
 
-
-// Logic to parse data and turn into MySQL commands goes below.
-
-
-
-// After that, you need the functions contained in the orm value...
-
-
 // Orm Variable
 //================================
 var orm = {
 
-    
-    // Example
-    //================================
-
-    // The last variable cb represents the anonymous function being passed from server.js
-    selectWhere: function(tableInput, colToSearch, valOfCol, cb) {
-      var queryString = "SELECT * FROM ?? WHERE ?? = ?";
-      connection.query(queryString, [tableInput, colToSearch, valOfCol], function(err, result) {
-        if (err) throw err;
-        cb(result);
-      });
-    },
-
-
-
-
-    // My Code
-    //================================
 
     // Select All Function
     //________________________________
@@ -53,7 +27,7 @@ var orm = {
 
     // Insert One Function
     //________________________________
-    insertOne: function(tableInput, burgerName, cb) { // Insert methods into function parenthasis
+    insertOne: function(tableInput, burgerName, cb) { // Probably needs logic on orms.js side to parse input into MySQL format
         // Code here
         var queryString = "INSERT INTO " + tableInput + " (burger_name) VALUES (" + burgerName + ");";
         connection.query(queryString, function(err, result) {

@@ -28,6 +28,9 @@ router.get("/", function(req, res) {
     });
 });
 
+
+// Shows 'burgers' Table In JSON Format
+//________________________________
 router.get("/api/burger_data", function(req, res) {
     burger.all(function(data) {
       var showBurgers = {
@@ -64,7 +67,6 @@ router.put("/api/burgers/:id", function(req, res) {
   
     burger.update(condition, function(result) {
       if (result.changedRows == 0) {
-        // If no rows were changed, then the ID must not exist, so 404
         return res.status(404).end();
       } else {
         console.log("Result: " + result)
