@@ -33,18 +33,18 @@ router.get("/", function(req, res) {
 //________________________________
 router.post("/api/burgers", function(req, res) {
     burger.create([
-      "burger_name", "devoured"
+      "burger_name"
     ], [
-      req.body.name, req.body.devoured // Make sure req.body names remain consistent 
+      req.body.name // Make sure req.body names remain consistent 
     ], function(result) {
-      // Send back the ID of the new quote
+      // Send back the ID of the new Burger???
       res.json({ id: result.insertId });
     });
 });
   
 
 
-// Switches 'devoured' In 'burgers' Table To True   //(change code inside here)
+// Switches 'devoured' In 'burgers' Table To True   //(Check code inside here)
 //________________________________
 router.put("/api/burgers/:id", function(req, res) {
     var condition = "id = " + req.params.id;
@@ -52,14 +52,16 @@ router.put("/api/burgers/:id", function(req, res) {
     console.log("condition", condition);
   
     burger.update({
-      sleepy: req.body.sleepy
-    }, condition, function(result) {
-      if (result.changedRows == 0) {
-        // If no rows were changed, then the ID must not exist, so 404
-        return res.status(404).end();
-      } else {
+      burgerID: req.body.burgerID // Gotta make sure front end code is 'burgerID'
+    }, function(result) {
+    //   if (result.changedRows == 0) {
+    //     // If no rows were changed, then the ID must not exist, so 404
+    //     return res.status(404).end();
+    //   } else {
+        console.log("Result: " + result)
         res.status(200).end();
-      }
+        res.status(200).end();
+      //}
     });
 });
   

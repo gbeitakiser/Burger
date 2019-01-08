@@ -16,7 +16,7 @@ var connection = require("../config/connection.js");
 // After that, you need the functions contained in the orm value...
 
 
-// Orm Var
+// Orm Variable
 //================================
 var orm = {
 
@@ -41,31 +41,39 @@ var orm = {
 
     // Select All Function
     //________________________________
-    selectAll: function() { // Insert methods into function parenthasis
-        // Code here
-        var queryString = "SELECT * FROM ?? WHERE ?? = ?";
-        connection.query(queryString, "//METHODS", function(err, result) {
-            // More code here
+    selectAll: function(tableInput, cb) {
+        var queryString = "SELECT * FROM " + tableInput + ";";
+        connection.query(queryString, function(err, result) {
+            if (err) {
+                throw err;
+            } 
+            cb(result);
         });
     },
 
     // Insert One Function
     //________________________________
-    insertOne: function() { // Insert methods into function parenthasis
+    insertOne: function(burgerName, cb) { // Insert methods into function parenthasis
         // Code here
-        var queryString = "INSERT INTO burgers (burger_name) VALUES ??";
-        connection.query(queryString, "//MORE METHODS", function(err, result) {
-            //More code here
+        var queryString = "INSERT INTO burgers (burger_name) VALUES (" + burgerName + ");";
+        connection.query(queryString, function(err, result) {
+            if (err) {
+                throw err
+            }
+            cb(result);
         })
     },
 
     // Update One Function
     //________________________________
-    updateOne: function() { // Insert methods into function parenthasis
-        // Code here
-        var queryString = ""; // Finish this part
-        connection.query(queryString, "//MORE METHODS", function(err, result) {
-            //More code here
+    updateOne: function(idNumber, cb) {
+        var queryString = "UPDATE burgers SET devoured = NOT 0 WHERE id = " + idNumber + ";"
+    
+        connection.query(queryString, function(err, result) {
+            if (err) {
+                throw err;
+              }
+              cb(result);
         })
     }
   };

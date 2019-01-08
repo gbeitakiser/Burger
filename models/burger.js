@@ -8,11 +8,11 @@ var orm = require("orm.js");
 
 
 
-// Burger variable
+// Burger Variable
 //================================
 var burger = {
 
-    // Selects * From 'burgers' Table   //(change code inside here)
+    // Selects * From 'burgers' Table
     //________________________________
     all: function(cb) {
       orm.selectAll("burgers", function(res) { // Check variables that go into this
