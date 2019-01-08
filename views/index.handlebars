@@ -5,12 +5,10 @@
 
  
 <ul>
-    {{!-- Add a button to this first group that interacrs with burgers.js to change state of burger --}}
+    {{!-- Add a button to this first group that interacts with burgers.js to change state of burger --}}
   {{#each burgers}}
     {{#unless devoured}}
-        <p>Burger: {{burger_name}}</p>
-        <p>Devoured: {{devoured}}</p>
-      {{!-- {{> burgers/burger-block devoured=true}} --}}
+      {{> burgers/burger-block devoured=false}}
     {{/unless}}
   {{/each}}
 </ul>
@@ -20,9 +18,7 @@
 <ul>
   {{#each burgers}}
     {{#if devoured}}
-        <p>Burger: {{burger_name}}</p>
-        <p>Devoured: {{devoured}}</p>
-      {{!-- {{> burgers/burger-block devoured=false}} --}}
+      {{> burgers/burger-block devoured=true}}
     {{/if}}
   {{/each}}
 </ul>

@@ -16,7 +16,7 @@ var burger = require("../models/burger.js");
 // Router Functions
 //================================
 
-// Selects * From 'burgers' Table   //(change code inside here)
+// Selects * From 'burgers' Table
 //________________________________
 router.get("/", function(req, res) {
     burger.all(function(data) {
@@ -25,6 +25,16 @@ router.get("/", function(req, res) {
       };
       console.log(showBurgers);
       res.render("index", showBurgers);
+    });
+});
+
+router.get("/api/burger_data", function(req, res) {
+    burger.all(function(data) {
+      var showBurgers = {
+        burgers: data
+      };
+      console.log(showBurgers);
+      res.json(showBurgers);
     });
 });
   
@@ -44,24 +54,23 @@ router.post("/api/burgers", function(req, res) {
   
 
 
-// Switches 'devoured' In 'burgers' Table To True   //(Check code inside here)
+// Switches 'devoured' In 'burgers' Table To True
 //________________________________
 router.put("/api/burgers/:id", function(req, res) {
-    var condition = "id = " + req.params.id;
+    var eatenBurgerID = req.params.id
+    var condition = eatenBurgerID;
   
-    console.log("condition", condition);
+    console.log(condition);
   
-    burger.update({
-      burgerID: req.body.burgerID // Gotta make sure front end code is 'burgerID'
-    }, function(result) {
-    //   if (result.changedRows == 0) {
-    //     // If no rows were changed, then the ID must not exist, so 404
-    //     return res.status(404).end();
-    //   } else {
+    burger.update(condition, function(result) {
+      if (result.changedRows == 0) {
+        // If no rows were changed, then the ID must not exist, so 404
+        return res.status(404).end();
+      } else {
         console.log("Result: " + result)
         res.status(200).end();
         res.status(200).end();
-      //}
+      }
     });
 });
   

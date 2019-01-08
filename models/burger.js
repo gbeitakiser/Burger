@@ -33,7 +33,7 @@ var burger = {
     // Switches 'devoured' In 'burgers' Table To True   
     //________________________________
     update: function(idNumber, cb) {
-      orm.updateOne("burgers", idNumber, function(res) { // Ensure that front-end input picks burgers by id number or change this code to pick by name
+      orm.updateOne(idNumber, function(res) {
         cb(res);
       });
     }

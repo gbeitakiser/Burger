@@ -66,8 +66,8 @@ var orm = {
 
     // Update One Function
     //________________________________
-    updateOne: function(tableInput, idNumber, cb) {
-        var queryString = "UPDATE " + tableInput + " SET devoured = NOT 0 WHERE id = " + idNumber + ";"
+    updateOne: function(idNumber, cb) {
+        var queryString = "UPDATE burgers SET devoured = NOT 0 WHERE id = " + idNumber + ";"
     
         connection.query(queryString, function(err, result) {
             if (err) {
