@@ -7,14 +7,17 @@
 // Requirements
 //================================
 var express = require("express");
-var burgerJS = require("burger.js") // Make sure this does/doesn't need relative file path
-
+var router = express.Router();
 
 var burger = require("../models/burger.js");
 
 
 
-// Create all routes and set up logic within those routes where required.
+// Router Functions
+//================================
+
+// Selects * From 'burgers' Table   //(change code inside here)
+//________________________________
 router.get("/", function(req, res) {
     burger.all(function(data) {
       var hbsObject = {
@@ -23,20 +26,27 @@ router.get("/", function(req, res) {
       console.log(hbsObject);
       res.render("index", hbsObject);
     });
-  });
+});
   
-  router.post("/api/burgers", function(req, res) {
+
+// Posts To 'burgers' Table   //(change code inside here)
+//________________________________
+router.post("/api/burgers", function(req, res) {
     burger.create([
-      "name", "sleepy"
+      "burger_name", "devoured"
     ], [
-      req.body.name, req.body.sleepy
+      req.body.name, req.body.devoured // Make sure req.body names remain consistent 
     ], function(result) {
       // Send back the ID of the new quote
       res.json({ id: result.insertId });
     });
-  });
+});
   
-  router.put("/api/burgers/:id", function(req, res) {
+
+
+// Switches 'devoured' In 'burgers' Table To True   //(change code inside here)
+//________________________________
+router.put("/api/burgers/:id", function(req, res) {
     var condition = "id = " + req.params.id;
   
     console.log("condition", condition);
@@ -51,7 +61,7 @@ router.get("/", function(req, res) {
         res.status(200).end();
       }
     });
-  });
+});
   
   
 
