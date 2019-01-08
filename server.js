@@ -8,8 +8,8 @@ var PORT = process.env.PORT || 8080;
 
 var app = express();
 
-
-app.use(express.static("public")); // "public" Will not be the same file path. Use whatever file contains page javascript
+// Check code on line 12
+app.use(express.static("public")); // "public" might not work since mine doesn't contain page javascript.
 
 // Parse application body as JSON
 app.use(express.urlencoded({ extended: true }));
@@ -22,7 +22,7 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Import routes and give the server access to them.
-var routes = require("./controllers/catsController.js");
+var routes = require("./controllers/burgers_controller.js");
 
 app.use(routes);
 

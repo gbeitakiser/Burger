@@ -1,10 +1,28 @@
-// Dependancy
+// This file sets up logic so that user input from front end can be turned into a format that MySQL can work with.
+// It then exports the logic in the orm variable so that burger.js can use it to send data it receives through orm 
+// logic and returned as sometjhing MySQL can read, which is then sent through the connection variable so MySQL database
+// is read/updated accordingly.
+
+// Requirements
+//================================
 var connection = require("../config/connection.js");
 
+
+
+// Logic to parse data and turn into MySQL commands goes below.
+
+
+
+// After that, you need the functions contained in the orm value...
+
+
+// Orm Var
+//================================
 var orm = {
 
-    // eeeeeeeeeeeeeeeee
+    
     // Example
+    //================================
 
     // The last variable cb represents the anonymous function being passed from server.js
     selectWhere: function(tableInput, colToSearch, valOfCol, cb) {
@@ -15,10 +33,14 @@ var orm = {
       });
     },
 
-    // +++++++++++++++++++++
+
+
+
     // My Code
+    //================================
 
     // Select All Function
+    //________________________________
     selectAll: function() { // Insert methods into function parenthasis
         // Code here
         var queryString = "SELECT * FROM ?? WHERE ?? = ?";
@@ -28,6 +50,7 @@ var orm = {
     },
 
     // Insert One Function
+    //________________________________
     insertOne: function() { // Insert methods into function parenthasis
         // Code here
         var queryString = "INSERT INTO burgers (burger_name) VALUES ??";
@@ -37,6 +60,7 @@ var orm = {
     },
 
     // Update One Function
+    //________________________________
     updateOne: function() { // Insert methods into function parenthasis
         // Code here
         var queryString = ""; // Finish this part
@@ -46,4 +70,8 @@ var orm = {
     }
   };
   
+
+
+// Exports 'orm' For Use By burger.js
+//================================
   module.exports = orm;
