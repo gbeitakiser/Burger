@@ -53,9 +53,9 @@ var orm = {
 
     // Insert One Function
     //________________________________
-    insertOne: function(burgerName, cb) { // Insert methods into function parenthasis
+    insertOne: function(tableInput, burgerName, cb) { // Insert methods into function parenthasis
         // Code here
-        var queryString = "INSERT INTO burgers (burger_name) VALUES (" + burgerName + ");";
+        var queryString = "INSERT INTO " + tableInput + " (burger_name) VALUES (" + burgerName + ");";
         connection.query(queryString, function(err, result) {
             if (err) {
                 throw err
@@ -66,8 +66,8 @@ var orm = {
 
     // Update One Function
     //________________________________
-    updateOne: function(idNumber, cb) {
-        var queryString = "UPDATE burgers SET devoured = NOT 0 WHERE id = " + idNumber + ";"
+    updateOne: function(tableInput, idNumber, cb) {
+        var queryString = "UPDATE " + tableInput + " SET devoured = NOT 0 WHERE id = " + idNumber + ";"
     
         connection.query(queryString, function(err, result) {
             if (err) {

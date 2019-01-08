@@ -3,11 +3,14 @@
 <h2>Uneaten Burgers</h2>
 
 
-{{!--  
+ 
 <ul>
-  {{#each cats}}
-    {{#unless sleepy}}
-      {{> cats/cat-block sleep=true}}
+    {{!-- Add a button to this first group that interacrs with burgers.js to change state of burger --}}
+  {{#each burgers}}
+    {{#unless devoured}}
+        <p>Burger: {{burger_name}}</p>
+        <p>Devoured: {{devoured}}</p>
+      {{!-- {{> burgers/burger-block devoured=true}} --}}
     {{/unless}}
   {{/each}}
 </ul>
@@ -15,9 +18,11 @@
 <h2>Eaten Burgers</h2>
 
 <ul>
-  {{#each cats}}
-    {{#if sleepy}}
-      {{> cats/cat-block sleep=false}}
+  {{#each burgers}}
+    {{#if devoured}}
+        <p>Burger: {{burger_name}}</p>
+        <p>Devoured: {{devoured}}</p>
+      {{!-- {{> burgers/burger-block devoured=false}} --}}
     {{/if}}
   {{/each}}
 </ul>
@@ -26,17 +31,9 @@
 <form class="create-form">
 
   <div class="form-group">
-    <label for="ca">Cat Name:</label>
-    <input type="text" id="ca" name="name">
+    <label for="burg">Burger Name:</label>
+    <input type="text" id="burg" name="name">
   </div>
 
-  <div class="form-group">
-    <label for="sleepy">Sleepy?</label><br>
-    <input type="radio" name="sleepy" value="1" checked> Sleepy!<br>
-    <input type="radio" name="sleepy" value="0"> Awake
-  </div>
-
-  <button type="submit">Add Cat</button>
+  <button type="submit">Add Burger</button>
 </form>
-
---}}

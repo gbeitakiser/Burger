@@ -20,11 +20,11 @@ var burger = require("../models/burger.js");
 //________________________________
 router.get("/", function(req, res) {
     burger.all(function(data) {
-      var hbsObject = {
+      var showBurgers = {
         burgers: data
       };
-      console.log(hbsObject);
-      res.render("index", hbsObject);
+      console.log(showBurgers);
+      res.render("index", showBurgers);
     });
 });
   

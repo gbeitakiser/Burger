@@ -4,7 +4,7 @@
 
 // Requirements
 //================================
-var orm = require("orm.js");
+var orm = require("../config/orm.js");
 
 
 
@@ -23,19 +23,17 @@ var burger = {
 
     // Posts To 'burgers' Table   //(change code inside here)
     //________________________________
-
-    // The variables cols and vals are arrays.
-    create: function(cols, vals, cb) {
-      orm.insertOne("burgers", cols, vals, function(res) { // Check variables that go into this
+    create: function(burgerName, cb) {
+      orm.insertOne("burgers", burgerName, function(res) {
         cb(res);
       });
     },
 
 
-    // Switches 'devoured' In 'burgers' Table To True   //(change code inside here)
+    // Switches 'devoured' In 'burgers' Table To True   
     //________________________________
-    update: function(objColVals, condition, cb) {
-      orm.updateOne("burgers", objColVals, condition, function(res) { // Check variables that go into this
+    update: function(idNumber, cb) {
+      orm.updateOne("burgers", idNumber, function(res) { // Ensure that front-end input picks burgers by id number or change this code to pick by name
         cb(res);
       });
     }
