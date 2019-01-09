@@ -27,9 +27,11 @@ var orm = {
 
     // Insert One Function
     //________________________________
-    insertOne: function(tableInput, burgerName, cb) { // Probably needs logic on orms.js side to parse input into MySQL format
+    insertOne: function(burgerName, cb) { // Probably needs logic on orms.js side to parse input into MySQL format
         // Code here
-        var queryString = "INSERT INTO " + tableInput + " (burger_name) VALUES (" + burgerName + ");";
+        var queryString = "INSERT INTO burgers (burger_name) VALUES ('" + burgerName + "');";
+        console.log(burgerName);
+        console.log(queryString);
         connection.query(queryString, function(err, result) {
             if (err) {
                 throw err

@@ -44,13 +44,12 @@ router.get("/api/burger_data", function(req, res) {
 
 // Posts To 'burgers' Table   //(change code inside here)
 //________________________________
-router.post("/api/burgers", function(req, res) {
+router.post("/api/burgers/", function(req, res) {
+
     burger.create([
-      "burger_name"
-    ], [
-      req.body.name // Make sure req.body names remain consistent 
+      req.body.burger_name
     ], function(result) {
-      // Send back the ID of the new Burger???
+      // Send back the ID of the new Burger???     // !!! Pay attention to this !!!
       res.json({ id: result.insertId });
     });
 });

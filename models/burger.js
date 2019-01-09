@@ -24,7 +24,7 @@ var burger = {
     // Posts To 'burgers' Table   //(change code inside here)
     //________________________________
     create: function(burgerName, cb) {
-      orm.insertOne("burgers", burgerName, function(res) {
+      orm.insertOne(burgerName, function(res) {
         cb(res);
       });
     },
