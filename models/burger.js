@@ -15,13 +15,13 @@ var burger = {
     // Selects * From 'burgers' Table
     //________________________________
     all: function(cb) {
-      orm.selectAll("burgers", function(res) { // Check variables that go into this
+      orm.selectAll("burgers", function(res) {
         cb(res);
       });
     },
 
 
-    // Posts To 'burgers' Table   //(change code inside here)
+    // Posts To 'burgers' Table   //
     //________________________________
     create: function(burgerName, cb) {
       orm.insertOne(burgerName, function(res) {

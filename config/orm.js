@@ -8,7 +8,7 @@
 var connection = require("../config/connection.js");
 
 
-// Orm Variable
+// Orm Variable For Export
 //================================
 var orm = {
 
