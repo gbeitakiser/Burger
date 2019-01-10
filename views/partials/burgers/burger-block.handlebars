@@ -1,14 +1,10 @@
 
 {{!-- Create HTML list element for each burger. Adds 'Devour' button to each uneaten burger --}}
 <li>
-	{{burger_name}}
-
 {{#unless devoured}}
 	<button class="change-devoured" data-id="{{id}}" data-devour="{{devoured}}">
 		Devour
 	</button>
 {{/unless}}
-    
-
-
+    {{burger_name}}
 </li>

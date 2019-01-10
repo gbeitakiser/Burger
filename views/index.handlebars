@@ -1,11 +1,15 @@
-<h1>🍔¡Eat Da Burger!🍔</h1>
+<div class="page-wrap">
 
+<h1>¡Eat Da Burger!</h1>
+
+
+<div class="uneaten-burgers">
 <h2>Uneaten Burgers</h2>
 
 
  {{!-- Adds list element for each uneaten burger. Adds 'devour' button from partials file to each uneaten burger --}}
  {{!-- --------------------------------------------------------------------------------------------------------- --}}
-<ul>
+<ul class="uneaten">
   {{#each burgers}}
     {{#unless devoured}}
       {{> burgers/burger-block devoured=false}}
@@ -13,11 +17,14 @@
   {{/each}}
 </ul>
 
+</div>
+
+<div class="eaten-burgers">
 <h2>Eaten Burgers</h2>
 
 {{!-- Adds list element for each uneaten burger --}}
 {{!-- ----------------------------------------- --}}
-<ul>
+<ul class="eaten">
   {{#each burgers}}
     {{#if devoured}}
       {{> burgers/burger-block devoured=true}}
@@ -25,7 +32,11 @@
   {{/each}}
 </ul>
 
+</div>
 
+
+
+<div class="burger-form">
 {{!-- The 'Add Burger' button --}}
 {{!-- ----------------------- --}}
 <h2>Add a Burger</h2>
@@ -38,3 +49,6 @@
 
   <button type="submit">Add Burger</button>
 </form>
+</div>
+
+</div>
