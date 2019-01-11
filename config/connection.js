@@ -6,15 +6,21 @@
 var mysql = require("mysql");
 
 
-// Conncetion Var
+// Conncetion Var And Heroku Help
 //================================
-var connection = mysql.createConnection({
-  host: "localhost",
-  port: 3306,
-  user: "root",
-  password: "4tigres", // REMOVE PASSWORD BEFORE PUSHING TO GITHUB
-  database: "burgers_db"
+var connection;
+
+if (process.env.JAWSDB_URL) {
+  connection = mysql.createConnection(process.env.JAWSDB_URL);
+} else {
+  connection = mysql.createConnection({
+    host: "localhost",
+    port: 3306,
+    user: "root",
+    password: "4tigres", // REMOVE PASSWORD BEFORE PUSHING TO GITHUB
+    database: "burgers_db"
 });
+}
 
 
 // Connects Here
